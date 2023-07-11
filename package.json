@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@prisma/client": "^5.0.0",
     "@radix-ui/react-toast": "^1.1.4",
     "@types/node": "20.4.1",
     "@types/react": "18.2.14",
@@ -31,5 +32,9 @@
     "tailwindcss-animate": "^1.0.6",
     "typescript": "5.1.6",
     "zustand": "^4.3.9"
+  },
+  "devDependencies": {
+    "prettier-plugin-prisma": "^4.13.0",
+    "prisma": "^5.0.0"
   }
 }
