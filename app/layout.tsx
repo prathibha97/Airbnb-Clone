@@ -1,26 +1,30 @@
-import './globals.css'
-import type { Metadata } from 'next'
-import { Nunito } from 'next/font/google'
+import type { Metadata } from 'next';
+import { Nunito } from 'next/font/google';
+import RegisterModal from './components/modals/RegisterModal';
 import Navbar from './components/navbar/Navbar';
+import { Toaster } from './components/toast/Toaster';
+import './globals.css';
 
 const font = Nunito({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Airbnb',
   description: 'Airbnb clone',
-}
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang='en'>
       <body className={font.className}>
-        <Navbar/>
+        <RegisterModal />
+        <Navbar />
         {children}
-        </body>
+        <Toaster />
+      </body>
     </html>
-  )
+  );
 }
