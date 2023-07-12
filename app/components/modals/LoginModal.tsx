@@ -50,7 +50,8 @@ const LoginModal: FC<LoginModalProps> = ({}) => {
 
       if (callback?.error) {
         return toast({
-          description: 'Login unsuccessful',
+          title:'Uh oh! Something went wrong.',
+          description: 'There was a problem with your request.',
           variant: 'destructive',
         });
       }
@@ -88,13 +89,13 @@ const LoginModal: FC<LoginModalProps> = ({}) => {
         outline
         label='Continue with Google'
         icon={FcGoogle}
-        onClick={() => {}}
+        onClick={() => signIn('google')}
       />
       <Button
         outline
         label='Continue with Github'
         icon={AiFillGithub}
-        onClick={() => {}}
+        onClick={() => signIn('github')}
       />
 
       <div className='text-neutral-500 text-center mt-4 font-light'>
