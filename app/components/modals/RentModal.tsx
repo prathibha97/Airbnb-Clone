@@ -3,12 +3,13 @@ import useRentModal from '@/app/hooks/useRentModal';
 import dynamic from 'next/dynamic';
 import { FC, useMemo, useState } from 'react';
 import { FieldValues, useForm } from 'react-hook-form';
+import Counter from '../Counter';
 import Heading from '../Heading';
 import CategoryInput from '../inputs/CategoryInput';
 import CountrySelect from '../inputs/CountrySelect';
 import { categories } from '../navbar/Categories';
 import Modal from './Modal';
-import Counter from '../Counter';
+import ImageUpload from '../inputs/ImageUpload';
 
 interface RentModalProps {}
 
@@ -47,9 +48,10 @@ const RentModal: FC<RentModalProps> = ({}) => {
 
   const category = watch('category');
   const location = watch('location');
-  const guestCount = watch('guestCount')
+  const guestCount = watch('guestCount');
   const roomCount = watch('roomCount');
   const bathroomCount = watch('bathroomCount');
+  const imageSrc = watch('imageSrc');
 
   const Map = useMemo(
     () =>
@@ -159,6 +161,22 @@ const RentModal: FC<RentModalProps> = ({}) => {
       </div>
     );
   }
+
+  if (step === STEPS.IMAGES) {
+    bodyContent = (
+      <div className='flex flex-col gap-8'>
+        <Heading
+          title='Add a photo of your place'
+          subtitle='Show guests what your place looks like!'
+        />
+        <ImageUpload
+          value={imageSrc}
+          onChange={(value) => setCustomValue('imageSrc', value)}
+        />
+      </div>
+    );
+  }
+
   return (
     <Modal
       title='Airbnb you home!'
