@@ -12,7 +12,7 @@ import HeartButton from '../HeartButton';
 interface ListingCardProps {
   data: Listing;
   reservation?: Reservation;
-  onAction: (id: string) => void;
+  onAction?: (id: string) => void;
   disabled?: boolean;
   actionLabel?: string;
   actionId?: string;
@@ -84,6 +84,7 @@ const ListingCard: FC<ListingCardProps> = ({
           <div className='font-semibold'>$ {price}</div>
           {!reservation && <div className='font-light'>night</div>}
         </div>
+        {/* @ts-ignore */}
         {onAction && actionLabel && (
           <Button
             disabled={disabled}
