@@ -68,8 +68,7 @@ const ListingClient: FC<ListingClientProps> = ({
           title: 'Location reserved successfully!',
         });
         setDateRange(initialDateRange);
-        // redirect to /trips
-        router.refresh();
+        router.push('/trips');
       })
       .catch(() => {
         toast({
