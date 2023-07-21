@@ -16,7 +16,6 @@ import Modal from './Modal';
 interface RegisterModalProps {}
 
 const RegisterModal: FC<RegisterModalProps> = ({}) => {
-
   const registerModal = useRegisterModal();
   const loginModal = useLoginModal();
 
@@ -39,7 +38,10 @@ const RegisterModal: FC<RegisterModalProps> = ({}) => {
 
     axios
       .post('/api/register', data)
-      .then(() => registerModal.onClose())
+      .then(() => {
+        registerModal.onClose();
+        loginModal.onOpen();
+      })
       .catch(() => {
         return toast({
           title: 'Uh oh! Something went wrong.',
