@@ -1,4 +1,5 @@
-import prisma from '@/lib/prismaDb';
+import prisma from "@/lib/prismaDb";
+
 
 interface IParams {
   listingId?: string;
@@ -8,18 +9,27 @@ interface IParams {
 
 export default async function getReservations(params: IParams) {
   try {
-    const { authorId, listingId, userId } = params;
+    const { listingId, userId, authorId } = params;
 
     const query: any = {};
 
-    if (listingId) query.listingId = listingId;
-    if (userId) query.userId = userId;
-    if (authorId) query.Listing = { userId: authorId };
+    if (listingId) {
+      query.listingId = listingId;
+    }
+
+    if (userId) {
+      query.userId = userId;
+    }
+
+    if (authorId) {
+      query.listing = { userId: authorId };
+    }
 
     const reservations = await prisma.reservation.findMany({
       where: query,
       include: {
-        Listing: true,
+        // @ts-ignore
+        listing: true,
       },
       orderBy: {
         createdAt: 'desc',
@@ -31,9 +41,11 @@ export default async function getReservations(params: IParams) {
       createdAt: reservation.createdAt?.toISOString(),
       startDate: reservation.startDate.toISOString(),
       endDate: reservation.endDate.toISOString(),
-      Listing: {
-        ...reservation.Listing,
-        createdAt: reservation.Listing.createdAt?.toISOString(),
+      listing: {
+        // @ts-ignore
+        ...reservation.listing,
+        // @ts-ignore
+        createdAt: reservation.listing.createdAt.toISOString(),
       },
     }));
 
