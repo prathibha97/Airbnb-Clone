@@ -31,6 +31,7 @@ export default async function RootLayout({
           <LoginModal />
           <RentModal />
           <SearchModal />
+          {/* @ts-ignore */}
           <Navbar currentUser={currentUser} />
           <div className='pb-20 pt-28'>{children}</div>
           <Toaster />

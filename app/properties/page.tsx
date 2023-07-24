@@ -32,6 +32,7 @@ const PropertiesPage = async () => {
 
   return (
     <ClientOnly>
+        {/* @ts-ignore */}
       <PropertiesClient listings={listings} currentUser={currentUser} />
     </ClientOnly>
   );

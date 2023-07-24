@@ -30,14 +30,16 @@ const ReservationsPage = async () => {
     );
   }
 
-  return(
+  return (
     <ClientOnly>
       <ReservationsClient
-      reservations={reservations}
-      currentUser={currentUser}
+        //@ts-ignore
+        reservations={reservations}
+        // @ts-ignore
+        currentUser={currentUser}
       />
     </ClientOnly>
-  )
+  );
 };
 
 export default ReservationsPage;

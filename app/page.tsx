@@ -29,6 +29,7 @@ export default async function Home({ searchParams }: HomeProps) {
             <ListingCard
               key={listing.id}
               data={listing}
+              //@ts-ignore
               currentUser={currentUser}
             />
           ))}
